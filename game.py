@@ -3,7 +3,7 @@ import time
 import random
 
 w_width, w_hight = 800, 600
-delay = 0.1
+delay = 0.2
 
 window = turtle.Screen()
 window.title("Snake by Vadim")
@@ -33,12 +33,22 @@ head.speed(0)
 head.shape("square")
 head.color("red")
 head.penup()
-head.goto(0,100)
+head.goto(0, 100)
 head.direction = "stop"
 
+# ------------ The array were parts of the snake's body is collected---------------
+segments = []
 
 # -------- Move snake -----------
 def move():
+    if len(segments) != 0:
+        for i in range(len(segments) - 1, 0, -1):
+            x = segments[i - 1].xcor()
+            y = segments[i - 1].ycor()
+            segments[i].goto(x, y)
+        x = head.xcor()
+        y = head.ycor()
+        segments[0].goto(x, y)
     if head.direction == "up":
         y = head.ycor()
         head.sety(y + 20)
@@ -51,7 +61,6 @@ def move():
     if head.direction == "left":
         x = head.xcor()
         head.setx(x - 20)
-
 
 # ---------- Changable direction -------------
 def go_up():
@@ -67,8 +76,8 @@ def go_right():
     if head.direction != "left":
         head.direction = "right"
 
-# ------------ keyboard bindings ------------
 
+# ------------ keyboard bindings ------------
 
 window.listen()
 window.onkey(go_up, "w")
@@ -84,12 +93,6 @@ food.color("white")
 food.penup()
 food.shapesize(0.50, 0.50)
 
-
-# ------------ Snake become longer eating---------------
-
-
-
-
 while True:
     window.update()
     move()
@@ -98,4 +101,11 @@ while True:
         x = random.randrange(-390, 390, 20)
         y = random.randrange(-290, 290, 20)
         food.goto(x, y)
+        # add new item to the snakes body
+        new_segment = turtle.Turtle()
+        new_segment.speed(0)
+        new_segment.shape("square")
+        new_segment.color("grey")
+        new_segment.penup()
+        segments.append(new_segment)
 
