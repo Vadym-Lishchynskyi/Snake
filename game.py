@@ -57,29 +57,38 @@ def move():
 def go_up():
     if head.direction != "down":
         head.direction = "up"
-
-
 def go_down():
     if head.direction != "up":
         head.direction = "down"
-
-
 def go_left():
     if head.direction != "right":
         head.direction = "left"
-
-
 def go_right():
     if head.direction != "left":
         head.direction = "right"
 
 # ------------ keyboard bindings ------------
 
+
 window.listen()
 window.onkey(go_up, "w")
 window.onkey(go_down, "s")
 window.onkey(go_right, "d")
 window.onkey(go_left, "a")
+
+# ------------ Food object ----------------
+food = turtle.Turtle()
+food.speed(0)
+food.shape("circle")
+food.color("white")
+food.penup()
+food.shapesize(0.50,0.50)
+food.goto(random.randrange(-390, 390, 20), random.randrange(-290, 290, 20))
+
+# ------------ Snake become longer eating---------------
+
+
+
 
 while True:
     window.update()
