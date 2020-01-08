@@ -3,6 +3,7 @@ import time
 import random
 
 w_width, w_hight = 800, 600
+delay = 0.1
 
 window = turtle.Screen()
 window.title("Snake by Vadim")
@@ -26,9 +27,34 @@ for i in range(2):
     t0.left(90)
 
 
+# -------- Snake's Head ----------
+head = turtle.Turtle()
+head.speed(0)
+head.shape("square")
+head.color("red")
+head.penup()
+head.goto(0,100)
+head.direction = "stop"
 
 
+# -------- Move snake -----------
+def move():
+    if head.direction == "up":
+        y = head.ycor()
+        head.sety(y + 20)
+    if head.direction == "down":
+        y = head.ycor()
+        head.sety(y - 20)
+    if head.direction == "right":
+        x = head.xcor()
+        head.setx(x + 20)
+    if head.direction == "left":
+        x = head.ycor()
+        head.sety(x - 20)
 
 
-window.mainloop()
+while True:
+    window.update()
+    move()
+    time.sleep(delay)
 
