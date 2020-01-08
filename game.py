@@ -4,9 +4,9 @@ wn = turtle.Screen()
 wn.title("Pong by Vadim")
 wn.bgcolor("black")
 wn.setup(width=800, height=600)
-wn.tracer(0)
+#wn.tracer(0)
 
-
+# ----------Game Objects ------------
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
@@ -27,7 +27,6 @@ paddle_b.penup()
 paddle_b.goto(360,0)
 
 
-
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
@@ -36,6 +35,25 @@ ball.color("white")
 ball.penup()
 ball.goto(0,0)
 
+
+# -------------Side paddles moving--------
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 100
+    paddle_a.sety(y)
+
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 250
+    paddle_a.sety(y)
+
+
+# -------------Keyboard binding ----------
+wn.listen()
+wn.onkeypress(paddle_a_up(), "Down")
+wn.onkeypress(paddle_a_down(), "Up")
+
+
 # -------------Main game loop-------------
-while True:
-    wn.update()
+wn.mainloop()
