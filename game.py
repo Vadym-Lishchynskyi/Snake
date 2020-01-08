@@ -82,8 +82,8 @@ food.speed(0)
 food.shape("circle")
 food.color("white")
 food.penup()
-food.shapesize(0.50,0.50)
-food.goto(random.randrange(-390, 390, 20), random.randrange(-290, 290, 20))
+food.shapesize(0.50, 0.50)
+
 
 # ------------ Snake become longer eating---------------
 
@@ -94,4 +94,8 @@ while True:
     window.update()
     move()
     time.sleep(delay)
+    if head.distance(food) < 15:
+        x = random.randrange(-390, 390, 20)
+        y = random.randrange(-290, 290, 20)
+        food.goto(x, y)
 
