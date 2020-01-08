@@ -49,9 +49,37 @@ def move():
         x = head.xcor()
         head.setx(x + 20)
     if head.direction == "left":
-        x = head.ycor()
-        head.sety(x - 20)
+        x = head.xcor()
+        head.setx(x - 20)
 
+
+# ---------- Changable direction -------------
+def go_up():
+    if head.direction != "down":
+        head.direction = "up"
+
+
+def go_down():
+    if head.direction != "up":
+        head.direction = "down"
+
+
+def go_left():
+    if head.direction != "right":
+        head.direction = "left"
+
+
+def go_right():
+    if head.direction != "left":
+        head.direction = "right"
+
+# ------------ keyboard bindings ------------
+
+window.listen()
+window.onkey(go_up, "w")
+window.onkey(go_down, "s")
+window.onkey(go_right, "d")
+window.onkey(go_left, "a")
 
 while True:
     window.update()
