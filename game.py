@@ -1,59 +1,34 @@
 import turtle
+import time
+import random
 
-wn = turtle.Screen()
-wn.title("Pong by Vadim")
-wn.bgcolor("black")
-wn.setup(width=800, height=600)
-#wn.tracer(0)
+w_width, w_hight = 800, 600
 
-# ----------Game Objects ------------
-# Paddle A
-paddle_a = turtle.Turtle()
-paddle_a.speed(0)
-paddle_a.shape("square")
-paddle_a.color("white")
-paddle_a.shapesize(stretch_wid=5,stretch_len=1)
-paddle_a.penup()
-paddle_a.goto(-360,0)
+window = turtle.Screen()
+window.title("Snake by Vadim")
+window.bgcolor("black")
+window.setup(width=w_width+35,height=w_hight+35)
 
 
-# Paddle B
-paddle_b = turtle.Turtle()
-paddle_b.speed(0)
-paddle_b.shape("square")
-paddle_b.shapesize(stretch_wid=5,stretch_len=1)
-paddle_b.color("white")
-paddle_b.penup()
-paddle_b.goto(360,0)
+# ----------- Border -----------
+t0 = turtle.Turtle()
+t0.speed(0)
+t0.penup()
+t0.pensize(10)
+t0.goto(-w_width/2,-w_hight/2)
+t0.pendown()
+t0.color("green")
+t0.hideturtle()
+for i in range(2):
+    t0.forward(w_width)
+    t0.left(90)
+    t0.forward(w_hight)
+    t0.left(90)
 
 
-# Ball
-ball = turtle.Turtle()
-ball.speed(0)
-ball.shape("square")
-ball.color("white")
-ball.penup()
-ball.goto(0,0)
 
 
-# -------------Side paddles moving--------
-def paddle_a_up():
-    y = paddle_a.ycor()
-    y += 100
-    paddle_a.sety(y)
 
 
-def paddle_a_down():
-    y = paddle_a.ycor()
-    y -= 250
-    paddle_a.sety(y)
+window.mainloop()
 
-
-# -------------Keyboard binding ----------
-wn.listen()
-wn.onkeypress(paddle_a_up(), "Down")
-wn.onkeypress(paddle_a_down(), "Up")
-
-
-# -------------Main game loop-------------
-wn.mainloop()
