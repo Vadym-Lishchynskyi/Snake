@@ -1,4 +1,4 @@
-print('Hello')
-for i in range(0,100,2):
-    print("i = " + str(i))
-print("NOw we are together!")
+import arcade
+
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
