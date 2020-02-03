@@ -8,7 +8,7 @@ delay = 0.2
 window = turtle.Screen()
 window.title("Snake by Vadim")
 window.bgcolor("black")
-window.setup(width=w_width+35,height=w_hight+35)
+window.setup(width=w_width+35, height=w_hight+35)
 
 
 # ----------- Border -----------
