@@ -62,6 +62,7 @@ def move():
         x = head.xcor()
         head.setx(x - 20)
 
+
 # ---------- Changable direction -------------
 def go_up():
     if head.direction != "down":
